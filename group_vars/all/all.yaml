@@ -11,7 +11,7 @@ agorakube_pki:
     root_cn: "ILKI Kubernetes Engine"
     expirity: "+3650d"
   management:
-    rotate_certificats: False
+    rotate_certificats: True
 
 agorakube_base_components:
   etcd:
@@ -35,10 +35,12 @@ agorakube_base_components:
           nodename: "master1"
           path: /var/etcd-backup
   kubernetes:
-    release: v1.21.5
+    release: v1.21.6
     upgrade: False
+  cloud_controller_manager:
+    enabled: True
   container:
-    engine: containerd
+    engine: docker
 # release : Only Supported if container engine is set to docker
     release: ""
 #    upgrade: false
@@ -61,7 +63,7 @@ agorakube_network:
   external_loadbalancing:
     enabled: False
     ip_range: 10.10.20.50-10.10.20.250
-    secret_key: LGyt2l9XftOxEUIeFf2w0eCM7KjyQdkHform0gldYBKMORWkfQIsfXW0sQlo1VjJBB17shY5RtLg0klDNqNq4PAhNaub+olSka61LxV73KN2VaJY/snrZmHbdf/a7DfdzaeQ5pzP6D5O7zbUZwfb5ASOhNrG8aDMY3rkf4ZzHkc=
+    secret_key: 
   kube_proxy:
     mode: ipvs
     algorithm: rr
@@ -88,7 +90,7 @@ agorakube_features:
   metrics_server:
     enabled: True
   ingress:
-    controller: nginx
+    controller: ""
     release: v0.46.0
 
   supervision:
@@ -182,10 +184,10 @@ agorakube_features:
 agorakube_populate_etc_hosts: True
 
 # Security
-agorakube_encrypt_etcd_keys:
+#agorakube_encrypt_etcd_keys:
 # Warrning: If multiple keys are defined ONLY LAST KEY is used for encrypt and decrypt.
 # Other keys are used only for decrypt purpose. Keys can be generated with command: head -c 32 /dev/urandom | base64
-  key1:
-    secret: 1fJcKt6vBxMt+AkBanoaxFF2O6ytHIkETNgQWv4b/+Q=
+#  key1:
+#    secret: 
 
 #restoration_snapshot_file: /path/snopshot/file Located on {{ etcd_data_directory }}
