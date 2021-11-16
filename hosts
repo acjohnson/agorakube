@@ -2,19 +2,19 @@
 kube01 ansible_connection=local ansible_python_interpreter=/usr/bin/python3
 
 [masters]
-kube01 ansible_host=10.0.0.3
+kube01 ansible_host=10.0.0.2
 
 [etcd]
-kube01 ansible_host=10.0.0.3
+kube01 ansible_host=10.0.0.2
 
 [workers]
-kube02 ansible_host=10.0.0.2
+kube02 ansible_host=10.0.0.3
 kube03 ansible_host=10.0.0.4
 
 [storage]
 
 [all:vars]
-advertise_masters=10.0.0.3
+advertise_masters=10.0.0.2
 
 # SSH connection settings
 ansible_ssh_extra_args=-o StrictHostKeyChecking=no
@@ -28,6 +28,6 @@ ansible_ssh_private_key_file=/root/.ssh/id_ed25519
 ansible_python_interpreter=/usr/bin/python3
 
 [etc_hosts]
-kube01 ansible_host=10.0.0.3
-kube02 ansible_host=10.0.0.2
+kube01 ansible_host=10.0.0.2
+kube02 ansible_host=10.0.0.3
 kube03 ansible_host=10.0.0.4
