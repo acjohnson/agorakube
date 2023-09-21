@@ -22,7 +22,7 @@ if [[ $DISTRO == *"ubuntu"* ]]; then
   sudo killall apt apt-get
   sudo apt update
   sudo apt install software-properties-common curl openssh-server -yqq
-  sudo apt -y install python3 python3-pip
+  sudo apt -y install python3 python3-pip cgroup-tools
 
 elif [[ $DISTRO == *"centos"* ]]; then
   sudo killall -9 yum

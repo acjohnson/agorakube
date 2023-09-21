@@ -20,7 +20,7 @@ agorakube_base_components:
     check: true
     data_path: /var/lib/etcd
   kubernetes:
-    release: v1.25.6
+    release: v1.25.14
     upgrade: False
   cloud_controller_manager:
     enabled: False
@@ -57,9 +57,9 @@ agorakube_features:
     generate_admin_token: False
     release: v2.2.0
   metrics_server:
-    enabled: True
+    enabled: False
   ingress:
-    controller: nginx
+    controller: ''
     release: v1.1.0
 
 etc_hosts:
@@ -71,7 +71,7 @@ etc_hosts:
 agorakube_populate_etc_hosts: True
 
 # Remove ALL /etc/hosts entries that are NOT defined in the etc_hosts group or etc_hosts variable
-agorakube_remove_etc_hosts: False
+agorakube_remove_etc_hosts: True
 
 # Optionally backup /etc/hosts each time a change is made
 agorakube_backup_etc_hosts: False
@@ -81,7 +81,7 @@ agorakube_encrypt_etcd_keys:
 # Warrning: If multiple keys are defined ONLY LAST KEY is used for encrypt and decrypt.
 # Other keys are used only for decrypt purpose. Keys can be generated with command: head -c 32 /dev/urandom | base64
   key1:
-    secret: 1fJcKt6vBxMt+AkBanoaxFF2O6ytHIkETNgQWv4b/+Q=
+    secret: Y+Wi1Xkuj/a3wWOS4lORFBiDCXeWKoiKHPRkokpvToA=
 
 agorakube_sonobuoy_mode: False
 #restoration_snapshot_file: /path/snopshot/file Located on {{ etcd_data_directory }}
